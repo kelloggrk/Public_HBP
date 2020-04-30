@@ -38,7 +38,7 @@ global dbdir = "C:/Users/Ryan Kellogg/Dropbox/HBP"
 ### R
 - All R scripts have been verified to run on Windows OS 64-bit R v3.5.1.
 - Required package installations are included as part of the bash script (see below)
-- To run the R code, you need files called `paths.R` and `data.R` stored in your local root HBP repo folder. (both `paths.R` and `data.R` are .gitignored)
+- To run the R code, you need files called `paths.R` and `data.R` stored in your local root HBP repo folder. (`paths.R` is .gitignored)
     - `paths.R` should look like the below, pointing to your own repo and dropbox directories:
 ```
 repo <-
