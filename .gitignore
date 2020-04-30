@@ -1,0 +1,67 @@
+## Core latex/pdflatex auxiliary files:
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+*.nav
+*.snm
+
+## Intermediate documents:
+*.dvi
+*-converted-to.*
+
+## Bibliography auxiliary files (bibtex/biblatex/biber):
+*.bbl
+*.bcf
+*.blg
+*-blx.aux
+*-blx.bib
+*.brf
+*.run.xml
+
+## Build tool auxiliary files:
+*.fdb_latexmk
+*.synctex
+*.synctex.gz
+*.synctex.gz(busy)
+*.pdfsync
+*.DS_Store
+*_out.txt
+
+## Matlab auxiliary files:
+*.asv
+*.m~
+
+## R auxiliary files:
+*.Rhistory
+*.Rapp.history
+Rplots.pdf
+
+## R directory files
+paths.R
+
+## Stata directory files
+globals.do
+
+## Matlab directory files
+globals.m
+
+## Files used in cluster
+*.feather
+
+## Log files
+*_log.txt
+
+
+## In windows powershell, list files exlcuded here using:
+#git ls-files -ci --exclude-standard
+## Remove files that are excluded here using:
+# git ls-files -ci --exclude-standard | foreach { git rm --cached $_ }
+
