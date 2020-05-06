@@ -774,16 +774,7 @@ We downloaded, in February, 2016, raw data of oil and gas leases in Louisiana fr
 
 We keep observations that are listed as being leases, memo of leases, lease options, lease extensions, and lease amendments. We drop observations that are mineral rights assignments, lease ratifications, mineral deeds, royalty deeds, and other documents. Leases include information on the grantor of the lease (typically the original mineral owner) and the grantee (the oil and gas firm that leases the land). In some cases we find that oil and gas firms are listed as grantors, with other oil and gas firms listed as grantees. As these observations are likely cases where the land was re-leased or subleased, we drop these observations from our sample.
 
-We drop leases with zero or missing acreage. Figure~\ref{fig:missing_lease_area} shows the fraction of observations in our data with zero or missing acreage. We find that leases with zero or missing acreage tend to occur at the beginning of the Haynesville leasing period, as shown in figure \ref{fig:missing_lease_area}. We also drop excess lease observations that are perfect duplicates, leases that have lengths of fewer than 10 days, and leases in which the reported township, range, and section is not within the stated reported parish.
-
-\begin{figure}[!t]
-\centering
-\figcapt{Observations with zero or missing acreage}
-\includegraphics[scale=0.8]{lease_descript/missing_lease_area.pdf}
-\fignote[0.8\textwidth]{Note: Figure presents raw lease data, showing the fraction of observations with zero or missing acreage and the total number of leases.}
-\label{fig:missing_lease_area}
-\end{figure}
-
+We drop leases with zero or missing acreage. We also drop excess lease observations that are perfect duplicates, leases that have lengths of fewer than 10 days, and leases in which the reported township, range, and section are not within the stated reported parish.
 
 We find that in some cases, a single firm grantee has leased from multiple grantors, and the reported acreage appears to be the total over all grantors. We identify these leases by identifying duplicates that share the same grantee name and the same acreage, and where the acreage reported is unusual---i.e., is either large and/or is not equal to a multiple of common lot sizes (e.g., 10 acres, 40 acres). In these cases we impute a new acreage measure by dividing the reported acreage by the number of apparent duplicates.
 
@@ -908,11 +899,9 @@ For each unit, we calculate the amount of time from when the first lease expires
 \label{fig:neighbor_50_1p2}
 \end{figure}
 
-One alternative explanation for the drilling patterns we observe is a cross-unit information or common pool externality. Common pool externalities might lead to a race to drill. Information externalities might lead to a reluctance to drill, as firms wait to learn from other firms' drilling outcomes.
+One alternative explanation for the drilling patterns we observe is a cross-unit information or common pool externality. Common pool externalities might lead to a race to drill. Information externalities might lead to a reluctance to drill, as firms wait to learn from other firms' drilling outcomes. To examine whether such externalities might be driving our results, we compare units in which most of the unit's neighbors are operated by the same operator with units in which most of the neighbors are operated by a different operator. The former should be less susceptible to externalities than the latter. We define neighboring units as those for which the centroids of the two units are within 1.2 miles (results are similar when using a threshold of 1.7 miles, which will include the diagonal units).
 
-To examine whether such externalities might be driving our results, we compare units in which most of the unit's neighbors are operated by the same operator with units in which most of the neighbors are operated by a different operator. The former should be less susceptible to externalities than the latter. We define neighboring units as those for which the centroids of the two units are within 1.2 miles (results are similar when using a threshold of 1.7 miles, which will include the diagonal units).
-
-In figure \ref{fig:neighbor_50_1p2}, panel (a) we compare drilling probabilities for these two types of units, using our analysis sample described in subsection \ref{sec:poolingunitdata}. Because that sample has very few units where $\geq$50\% of neighboring operators are the same, panel (b) also examines the full set of Haynesville units that had drilling. Results are similar for each. For both types of units, we observe substantial bunching of drilling just before the first lease in the unit expires, leading us to conclude that cross-unit externalities are not a substantial driver of our results.
+In figure \ref{fig:neighbor_50_1p2}, panel (a) we compare drilling probabilities for these two types of units, using our analysis sample described in subsection \ref{sec:poolingunitdata}. For both types of units, we observe substantial bunching of drilling just before the first lease in the unit expires, leading us to conclude that cross-unit externalities are not a substantial driver of our results. Because the analysis sample has few units in which $\geq50\%$ of neighboring operators are the same, panel (b) uses the full set of Haynesville units that had drilling. It finds similar results.
 
 
 
@@ -1223,17 +1212,7 @@ Finally, the firm prefers drilling one well to drilling no wells if:
 \nu^1_t - \nu^0_t > M \delta E[\tilde{V}_{\ell,t+1,\theta}|P_t,C_t] - (M - 1) \delta E[\tilde{W}_{\ell,t+1,\theta}|P_t,C_t] - u^1_{\ell,t,\theta} \\
 \end{equation}
 
-This system of preferences is then an ordered logit. We have the following choice probabilities:
-\begin{equation}
-\begin{aligned}
-p^M_{\ell,t,\theta}(P_t,C_t) &= 1 - \frac{1}{1 + \exp\left\{ \dfrac{1}{\sigma_\nu} \left(  u^1_{\ell,t,\theta} - \delta E[\tilde{W}_{\ell,t+1,\theta}|P_t,C_t] \right) \right\} } \\
-p^1_{\ell,t,\theta}(P_t,C_t) &= \frac{1}{1 + \exp\left\{ \dfrac{1}{\sigma_\nu} \left( u^1_{\ell,t,\theta} - \delta E[\tilde{W}_{\ell,t+1,\theta}|P_t,C_t]\right) \right\}} \\
-& - \frac{1}{1 + \exp\left\{ \dfrac{1}{\sigma_\nu} \left( (M - 1) \delta E[\tilde{W}_{\ell,t+1,\theta}|P_t,C_t] + u^1_{\ell,t,\theta} - M \delta E[\tilde{V}_{\ell,t+1,\theta}|P_t,C_t]\right) \right\}} \\
-p^0_{\ell,t,\theta}(P_t,C_t) &= \frac{1}{1 + \exp\left\{ \dfrac{1}{\sigma_\nu} \left(  (M - 1) \delta E[\tilde{W}_{\ell,t+1,\theta}|P_t,C_t] + u^1_{\ell,t,\theta} - M \delta E[\tilde{V}_{\ell,t+1,\theta}|P_t,C_t]\right) \right\} }\\
-\end{aligned}
-\end{equation}
-
-There are three distinct intervals on the support of $\nu^1_t - \nu^0_t$, each associated with a single optimal action. This result produces some intuitive firm behavior. Suppose that the lease is early in the primary term.  Then $E[\tilde{W}_{\ell,t+1,\theta}|P_t,C_t]$ and $E[\tilde{V}_{\ell,t+1,\theta}|P_t,C_t]$ are reasonably close to one another because the value of moving into the indefinite secondary term immediately is low (if they were indeed equal, the interval on which $a=1$ is chosen would be zero). Thus, conditional on wanting to drill at least one well early on in the lease, the firm is likely to drill all of them. On the other hand, suppose $E[\tilde{W}_{\ell,t+1,\theta}|P_t,C_t]$ is much larger than $E[\tilde{V}_{\ell,t+1,\theta}|P_t,C_t]$ because the lease is late in the primary term. Then the payoff from moving into the secondary term is large, and the firm will be more likely to drill just one well conditional on drilling any at all.
+This system of preferences is then an ordered logit. There are three distinct intervals on the support of $\nu^1_t - \nu^0_t$, each associated with a single optimal action: drill all $M$ wells, drill 1 well, or drill no wells. This result produces some intuitive firm behavior. Suppose that the lease is early in the primary term.  Then $E[\tilde{W}_{\ell,t+1,\theta}|P_t,C_t]$ and $E[\tilde{V}_{\ell,t+1,\theta}|P_t,C_t]$ are reasonably close to one another because the value of moving into the indefinite secondary term immediately is low (if they were indeed equal, the interval on which $a=1$ is chosen would be zero). Thus, conditional on wanting to drill at least one well early on in the lease, the firm is likely to drill all of them. On the other hand, suppose $E[\tilde{W}_{\ell,t+1,\theta}|P_t,C_t]$ is much larger than $E[\tilde{V}_{\ell,t+1,\theta}|P_t,C_t]$ because the lease is late in the primary term. Then the payoff from moving into the secondary term is large, and the firm will be more likely to drill just one well conditional on drilling any at all.
 
 The expression is somewhat more complicated when we move to the case where the primary term is about to expire ($t = \bar{T}$). Now the firm's choice to drill zero wells now includes two possible sub-actions: pay to extend, or abandon. Now we write the value of drilling zero wells as:
 
@@ -1295,10 +1274,10 @@ We then drop units in which reported leased acreage ever increases after 1Q 2010
 Finally, we drop units in which a well is drilled when leased acreage is zero in our data. This last restriction removes \input{single_numbers_tex/calibration/Ndropzeroacres.tex}units, following the imposition of the other restrictions. It is necessary because our model can never rationalize drilling when acreage is zero (since the firm makes no profits), but we sometimes see zero acreage in the data due to missing and mis-reported data in the lease records. The final calibration sample then contains \input{single_numbers_tex/calibration/Nfinal.tex}units. Figure \ref{fig:calibration_unit_map} maps the distribution of these units within the Haynesville Shale.
 
 % FIGURE SHOWING MAP WITH CALIBRATION SAMPLE
-\begin{figure}[!htbp]
+\begin{figure}[!t]
 \centering
 \figcapt[\textwidth]{Locations of units in the calibration sample}
-\includegraphics[scale=0.45]{final_estimation_sample_unit_map.pdf}
+\includegraphics[scale=0.5]{final_estimation_sample_unit_map.pdf}
 \label{fig:calibration_unit_map}
 \end{figure}
 
