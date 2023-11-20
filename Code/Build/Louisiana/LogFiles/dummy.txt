@@ -1,1 +1,0 @@
-Dummy file to ensure that LogFiles directory is cloned with the repo
